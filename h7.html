@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LICORICE</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">LICORICE</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H7.jpg">
+            <img class="images" src="H\H7a.jpg">
+            <img class="images" src="H\H7b.jpg">
+            <img class="images" src="H\H7c.jpg">
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Glycyrrhiza glabra
+            </p>    
+            <p class="head_text">
+            Common name: Mulethi / Yastimadhu
+            </p>
+            <p id="texts">
+                Licorice thrives in well-drained,
+                sandy or loamy soils with a temperate
+                climate. It is typically found in regions with
+                moderate rainfall and is commonly cultivated
+                in parts of Europe, Asia, and the Middle East.
+                It is grown from seeds in well-drained soil
+                with ample sunlight. Plants are spaced 30-45 cm apart. Regular
+                watering is needed, but overwatering should be avoided. It takes 2-3
+                years for the roots to mature for harvest. It is used for soothing sore
+                throats, reducing coughs, treating ulcers, alleviating digestive issues,
+                managing respiratory conditions like bronchitis, and supporting
+                adrenal function. It also has anti-inflammatory, antiviral, and
+                immune-boosting properties.    
+            </p>
+        </div>
+    </div><br><br>
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script>
+  
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+  
+      
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+      scene.add(hemisphereLight);
+  
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        'v7.gltf',
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+  
+      camera.position.z = 2;
+  
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.10;
+      controls.screenSpacePanning = false;
+      controls.maxPolarAngle = Math.PI / 2;
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      </script>
+</body>
+</html>

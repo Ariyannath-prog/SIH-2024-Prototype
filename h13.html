@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWEET FLAG</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">SWEET FLAG</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H13.jpg">
+            <img class="images" src="H\H13a.jpg">
+            <img class="images" src="H\H13b.jpg">
+            <img class="images" src="H\H13c.jpg">
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Acorus calamus
+            </p>    
+            <p class="head_text">
+            Common name: Bach
+            </p>
+            <p id="texts">
+                Sweet flag (Acorus calamus) thrives
+                in wet, marshy areas, including riverbanks,
+                swamps, and pond edges. It prefers
+                temperate and subtropical climates, often
+                growing in shallow water or moist, fertile soil. It is cultivated by
+                planting rhizomes in wet, marshy soil or shallow water. It requires full
+                sunlight and regular watering. Rhizomes should be spaced to allow
+                growth, and the plant benefits from occasional fertilization in
+                nutrient-rich soil. It (Acorus calamus) is used in traditional medicine
+                for digestive issues, such as indigestion, bloating, and nausea. It's also
+                used to treat respiratory conditions, coughs, and bronchitis.
+                Additionally, it has been employed as an antimicrobial and antiinflammatory
+                remedy.
+            </p>
+        </div>
+    </div><br><br>
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script>
+  
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+  
+      
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+      scene.add(hemisphereLight);
+  
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        'v13.gltf',
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+  
+      camera.position.z = 2;
+  
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.10;
+      controls.screenSpacePanning = false;
+      controls.maxPolarAngle = Math.PI / 2;
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      </script>
+</body>
+</html>

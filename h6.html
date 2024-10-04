@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOLY BASIL</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">HOLY BASIL</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H6.jpg">
+            <img class="images" src="H\H6a.jpg">
+            <img class="images" src="H\H6b.jpg">
+            <img class="images" src="H\H6c.jpg">
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Ocimum tenuiflorum
+            </p>    
+            <p class="head_text">
+            Common name: Tulsi / Thai basil
+            </p>
+            <p id="texts">
+                Holy basil or Tulsi, grows best in tropical and
+                subtropical climates with well-drained soil and
+                abundant sunlight. It is commonly cultivated in
+                India and Southeast Asia, often found in home
+                gardens and temples. It grows best in tropical and subtropical
+                climates with well-drained soil and abundant sunlight. It is commonly
+                cultivated in India and Southeast Asia, often found in home gardens
+                and temples. Holy basil is used to manage stress, boost immunity,
+                and improve respiratory health. It helps treat conditions like anxiety,
+                asthma, and colds. Additionally, it supports digestion and can aid in
+                managing diabetes and inflammation.    
+            </p>
+        </div>
+    </div><br><br>
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script>
+  
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+  
+      
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+      scene.add(hemisphereLight);
+  
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        'v6.gltf',
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+  
+      camera.position.z = 2;
+  
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.10;
+      controls.screenSpacePanning = false;
+      controls.maxPolarAngle = Math.PI / 2;
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      </script>
+</body>
+</html>

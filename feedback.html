@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback from</title>
+    <link rel="stylesheet" href="feedback.css">
+</head> 
+<body>
+    <h1>FEEDBACK FROM</h1>
+    <form method="post" action=''>
+
+        <fieldset>
+          <label for="first-name">Enter Your First Name: <input id="first-name" name="first-name" type="text" required /></label>
+          <label for="last-name">Enter Your Last Name: <input id="last-name" name="last-name" type="text" required /></label>
+          <label for="email">Enter Your Email: <input id="email" name="email" type="email" required /></label>
+            <br><br>
+            <hr>
+        <fieldset>
+          <label for="referrer">How was your experience?
+            <select id="referrer" name="referrer">
+              <option value="">(select one)</option>
+              <option value="1">Best</option>
+              <option value="2">Good</option>
+              <option value="3">Can be more better</option>
+              <option value="4">Worst</option>
+            </select><br><br>
+          </label>
+          <label for="bio">Give your Feedback:
+            <textarea id="bio" placeholder="Enter your feedback here..."></textarea>
+          </label>
+        </fieldset>
+
+        <input type="submit" value="Submit" />
+      </form>
+</body>
+</html>

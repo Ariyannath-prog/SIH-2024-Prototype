@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONKHOOD</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">MONKHOOD</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H14.jpg">
+            <img class="images" src="H\H14A.jpg">
+            <img class="images" src="H\H14B.jpg">
+            <img class="images" src="H\H14C.jpg">
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Aconitum ferox
+            </p>    
+            <p class="head_text">
+            Common name: Meetha Vish
+            </p>
+            <p id="texts">
+                Aconitum ferox thrives in the
+                mountainous regions of the
+                Himalayas, particularly in Nepal, India,
+                and Bhutan. It prefers high-altitude
+                areas with cool, moist conditions, often
+                growing in meadows and open forests.
+                Aconitum ferox is cultivated by sowing seeds in well-drained, fertile
+                soil in a cool, shaded environment. It requires a high-altitude setting
+                and regular watering. Plants should be spaced to accommodate their
+                size and provide good air circulation. Aconitum ferox is utilized in
+                traditional medicine for its potent analgesic and anti-inflammatory
+                effects. It is commonly used to treat a variety of conditions, including
+                fever, where it helps reduce elevated body temperatures, and
+                rheumatic pain, providing relief from joint and muscle discomfort.
+                Additionally, it is employed to alleviate neuralgia, or nerve pain, and
+                to manage respiratory issues such as coughs and bronchitis. Given its
+                strength, it is essential to consult a healthcare professional before
+                using Aconitum ferox.    
+            </p>
+        </div>
+    </div><br><br>
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script>
+  
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+  
+      
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+      scene.add(hemisphereLight);
+  
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        'v14.gltf',
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+  
+      camera.position.z = 2;
+  
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.10;
+      controls.screenSpacePanning = false;
+      controls.maxPolarAngle = Math.PI / 2;
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      </script>
+</body>
+</html>

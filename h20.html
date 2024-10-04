@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALABAR NUT</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">MALABAR NUT</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H20.jpg">
+            <img class="images" src="H\H20A.jpg">
+            <img class="images" src="H\H20B.jpg">
+            <img class="images" src="H\H20C.jpg">
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Adhatoda vasica
+            </p>    
+            <p class="head_text">
+            Common name: Adusa/ Vasaka
+            </p>
+            <p id="texts">
+                The Malabar nut (Justicia
+                adhatoda) thrives in tropical and
+                subtropical regions, commonly found in India, Southeast Asia, and Sri
+                Lanka. It grows in lowlands, hillsides, and forest edges, favoring welldrained
+                soils and warm, humid climates. Malabar nut (Justicia
+                adhatoda) is cultivated through seeds or stem cuttings. It prefers
+                well-drained soil, partial shade, and warm climates. Regular watering
+                is essential, but waterlogging should be avoided. Pruning helps
+                promote bushy growth and better yields. Malabar nut (Justicia
+                adhatoda) is widely used in traditional medicine for its antiinflammatory,
+                bronchodilator, and expectorant properties. It helps
+                treat respiratory issues like asthma, bronchitis, cough, and
+                tuberculosis. Additionally, it is used for cold, fever, and other lungrelated
+                conditions due to its ability to clear mucus.    
+            </p>
+        </div>
+    </div><br><br>
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script>
+  
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+  
+      
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+      scene.add(hemisphereLight);
+  
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        'v20.gltf',
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+  
+      camera.position.z = 2;
+  
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.10;
+      controls.screenSpacePanning = false;
+      controls.maxPolarAngle = Math.PI / 2;
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      </script>
+</body>
+</html>

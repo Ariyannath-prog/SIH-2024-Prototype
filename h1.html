@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOTU KOLA</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">GOTU KOLA</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H1.jpg">
+            <img class="images" src="H\H1a.jpg">
+            <img class="images" src="H\H1b.jpg">
+            <img class="images" src="H\H1c.jpg"> 
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Centella asiatica
+            </p>    
+            <p class="head_text">
+            Common name: Mandukalparni
+            </p>
+            <p id="texts">
+                A member of the parsley family, it has
+                no taste or smell. It thrives in and around
+                water. It has small fan-shaped green leaves
+                with white or light purple-to-pink flowers
+                and small oval fruit. The leaves and stems
+                of the plant are used as medicine. It is
+                most often used to treat varicose veins
+                and chronic venous insufficiency, a
+                condition where blood pools in the legs. It is also used in ointments
+                to treat psoriasis and help heal minor wounds.</p>
+        </div>
+    </div><br><br>
+
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  
+  <script>
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    
+    const light = new THREE.DirectionalLight(0xffffff, 1.3);
+    light.position.set(1, 1, 1).normalize();
+    scene.add(light);
+
+    const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+    scene.add(hemisphereLight);
+
+    const loader = new THREE.GLTFLoader();
+    loader.load(
+      'v1.gltf',
+      function (gltf) {
+        scene.add(gltf.scene);
+      },
+      undefined,
+      function (error) {
+        console.error(error);
+      }
+    );
+
+    camera.position.z = 2;
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.10;
+    controls.screenSpacePanning = false;
+    controls.maxPolarAngle = Math.PI / 2;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+    
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+    </script>
+</body>
+</html>

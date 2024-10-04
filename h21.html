@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TURMERIC PLANT</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">TURMERIC PLANT</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H21.jpg">
+            <img class="images" src="H\H21A.jpg">
+            <img class="images" src="H\H21B.jpg">
+            <img class="images" src="H\H21C.jpg">
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Curcuma longa
+            </p>    
+            <p class="head_text">
+            Common name: Haldi
+            </p>
+            <p id="texts">
+                Turmeric (Curcuma longa) thrives in
+                tropical and subtropical regions, primarily
+                in India and Southeast Asia. It grows best
+                in warm, humid climates with welldrained,
+                fertile soils, often in areas with
+                heavy rainfall and partial sunlight.
+                Turmeric (Curcuma longa) is cultivated using rhizomes (underground
+                stems) planted in well-drained, fertile soil. It requires a warm, humid
+                climate with ample rainfall. The rhizomes are planted in furrows and
+                need regular watering. Harvesting occurs 7-10 months after planting,
+                when leaves turn yellow. Turmeric (Curcuma longa) is known for its
+                anti-inflammatory, antioxidant, and antimicrobial properties. It helps
+                treat arthritis, digestive disorders, and skin conditions. It is also used
+                to alleviate respiratory issues, enhance liver function, and support
+                cardiovascular health. Its active compound, curcumin, is largely
+                responsible for these benefits.
+            </p>
+        </div>
+    </div><br><br>
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script>
+  
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+  
+      
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+      scene.add(hemisphereLight);
+  
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        'v21.gltf',
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+  
+      camera.position.z = 2;
+  
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.10;
+      controls.screenSpacePanning = false;
+      controls.maxPolarAngle = Math.PI / 2;
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      </script>
+</body>
+</html>

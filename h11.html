@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEVIL’S COTTON</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">DEVIL’S COTTON</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H11.jpg">
+            <img class="images" src="H\H11a.jpg">
+            <img class="images" src="H\H11b.jpg">
+            <img class="images" src="H\H11c.jpg">
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Abroma augustum
+            </p>    
+            <p class="head_text">
+            Common name: Ulatkambal
+            </p>
+            <p id="texts">
+                Abroma augusta (Devil's Cotton)
+                thrives in tropical and subtropical
+                regions, particularly in Southeast Asia,
+                including India. It prefers moist, well-drained soils in shaded or semishaded
+                areas, often found in forests, riverbanks, and cultivated areas
+                with ample rainfall. It is cultivated by sowing seeds or planting
+                cuttings in moist, well-drained soil. It thrives in tropical climates with
+                partial shade and requires regular watering. The plant prefers areas
+                with high humidity and grows well in forest edges or garden settings.
+                Devil’s cotton is traditionally used in Ayurvedic medicine to treat
+                menstrual disorders, especially dysmenorrhea (painful menstruation)
+                and amenorrhea (absence of menstruation). It is also used to manage
+                diabetes, improve uterine health, and relieve inflammation, though
+                scientific validation is still limited.   
+            </p>
+        </div>
+    </div><br><br>
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script>
+  
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+  
+      
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+      scene.add(hemisphereLight);
+  
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        'v11.gltf',
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+  
+      camera.position.z = 2;
+  
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.10;
+      controls.screenSpacePanning = false;
+      controls.maxPolarAngle = Math.PI / 2;
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      </script>
+</body>
+</html>

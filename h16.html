@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDIAN LABURNUM</title>
+    <link rel="stylesheet" href="h_style.css">
+</head>
+<body><br><br>
+    <header id="header">INDIAN LABURNUM</header><br><br>
+    <div class="main">
+        <div class="second_main">
+            <p id="photo">PHOTOS:</p>
+            <div id="id_background">
+            <img class="images" src="H\H16.jpg">
+            <img class="images" src="H\H16A.jpg">
+            <img class="images" src="H\H16B.jpg">
+            <img class="images" src="H\H16C.jpg">
+            <br>
+            </div>
+            <p class="head_text">Botanical Name: Cassia fistula
+            </p>    
+            <p class="head_text">
+            Common name: Amaltas
+            </p>
+            <p id="texts">
+                Indian laburnum (Cassia
+                fistula) thrives in tropical and
+                subtropical regions of South and
+                Southeast Asia. It grows in welldrained,
+                sandy soils and is commonly
+                found in open forests, roadsides, and
+                gardens where it receives full sunlight. It is cultivated by sowing seeds
+                in well-drained, sandy soil. It requires full sunlight and regular
+                watering. Plants should be spaced to allow for their large size, and
+                occasional fertilization supports growth. Indian laburnum (Cassia
+                fistula) is used in traditional medicine to treat various ailments. Its
+                bark and leaves are applied for digestive issues like constipation, and
+                it is believed to help with conditions such as jaundice and liver
+                disorders. Additionally, it has been used for rare diseases like cystic
+                fibrosis and certain types of hepatitis.                    
+            </p>
+        </div>
+    </div><br><br>
+    <p id="THREEd_header"><b>3D MODEL</b></p>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script>
+  
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+  
+      
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1); // Sky color, ground color, intensity
+      scene.add(hemisphereLight);
+  
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        'v16.gltf',
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+  
+      camera.position.z = 2;
+  
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.10;
+      controls.screenSpacePanning = false;
+      controls.maxPolarAngle = Math.PI / 2;
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      </script>
+</body>
+</html>
