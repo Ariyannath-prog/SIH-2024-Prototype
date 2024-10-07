@@ -52,6 +52,8 @@ body{
     border:none;
     border-radius: 10px;
     display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
 }
 .sub_main:hover{
     width:208px;
