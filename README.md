@@ -14,6 +14,7 @@ public/
     images/background.png    Shared site background
     js/model-viewer.js       Shared responsive Three.js viewer
     models/                  glTF, binary and texture assets
+    vendor/three/            Bundled Three.js r128 viewer dependencies
     video/                   Web-optimized garden tour
 .github/workflows/pages.yml  Automatic Pages deployment
 scripts/check-site.mjs       Asset and path validator
@@ -62,4 +63,4 @@ Every push to `main` will validate and deploy only the `public/` directory.
 - The original 140 MiB garden video is preserved locally at `source-material/V1-original.mp4` and intentionally ignored by Git. The deployed 720p version is about 4.5 MiB.
 - The original files did not include the `v13` (Sweet Flag) or `v22` (Drumstick) glTF packages. Those two pages now show a clear unavailable message instead of making broken requests.
 - To restore either missing model, add its `.gltf`, `.bin`, and textures under `public/assets/models/`, then set that page's `data-model-url` to the relative `.gltf` path.
-- Three.js r128, GLTFLoader, and OrbitControls are loaded from HTTPS CDNs. The model data itself is served from the same GitHub Pages origin.
+- Three.js r128, GLTFLoader, and OrbitControls are bundled under `public/assets/vendor/three/`, so every viewer dependency and model asset is served from the same GitHub Pages origin.

@@ -7,6 +7,12 @@ const projectDirectory = path.resolve(scriptDirectory, "..");
 const publicDirectory = path.join(projectDirectory, "public");
 const maximumGitFileSize = 100 * 1024 * 1024;
 const errors = [];
+const modelViewerScripts = [
+    "./assets/vendor/three/three.min.js",
+    "./assets/vendor/three/GLTFLoader.js",
+    "./assets/vendor/three/OrbitControls.js",
+    "./assets/js/model-viewer.js",
+];
 
 function walk(directory) {
     return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -115,6 +121,26 @@ for (const htmlFile of htmlFiles) {
 
     for (const match of html.matchAll(referencePattern)) {
         validateReference(htmlFile, match[1]);
+    }
+
+    if (/\bdata-model-url\s*=/.test(html)) {
+        let previousScriptIndex = -1;
+
+        for (const scriptPath of modelViewerScripts) {
+            const scriptIndex = html.indexOf(scriptPath);
+
+            if (scriptIndex === -1) {
+                errors.push(
+                    `${path.relative(projectDirectory, htmlFile)}: missing local 3D viewer dependency: ${scriptPath}`,
+                );
+            } else if (scriptIndex < previousScriptIndex) {
+                errors.push(
+                    `${path.relative(projectDirectory, htmlFile)}: 3D viewer dependencies are in the wrong load order.`,
+                );
+            }
+
+            previousScriptIndex = Math.max(previousScriptIndex, scriptIndex);
+        }
     }
 }
 
