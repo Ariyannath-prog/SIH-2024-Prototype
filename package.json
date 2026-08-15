@@ -1,0 +1,10 @@
+{
+  "name": "sih-2024-virtual-herbal-garden",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub Pages-ready SIH 2024 virtual herbal garden prototype",
+  "scripts": {
+    "check": "node scripts/check-site.mjs",
+    "test": "npm run check"
+  }
+}
