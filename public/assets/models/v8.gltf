@@ -1,0 +1,173 @@
+{
+    "asset": {
+        "version": "2.0",
+        "generator": "Open Asset Import Library (assimp v5.4.0)"
+    },
+    "extensionsUsed": [
+        "KHR_materials_volume",
+        "FB_ngon_encoding"
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 38300,
+            "type": "VEC3",
+            "max": [
+                0.9977459907531738,
+                0.9188849925994873,
+                0.8919709920883179
+            ],
+            "min": [
+                -1.0022640228271484,
+                -0.8982290029525757,
+                -0.8885070085525513
+            ]
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 38300,
+            "type": "VEC3",
+            "max": [
+                0.9999867081642151,
+                0.9993147850036621,
+                0.9999731779098511
+            ],
+            "min": [
+                -0.9999595880508423,
+                -0.9976566433906555,
+                -0.999967098236084
+            ]
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 38300,
+            "type": "VEC2",
+            "max": [
+                0.9990234375,
+                0.9990234375
+            ],
+            "min": [
+                0.0008139610290527344,
+                0.080078125
+            ]
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5125,
+            "count": 174525,
+            "type": "SCALAR",
+            "max": [
+                38299
+            ],
+            "min": [
+                0
+            ]
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 1923700,
+            "uri": "v8_0.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 459600,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 459600,
+            "byteLength": 459600,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 919200,
+            "byteLength": 306400,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 1225600,
+            "byteLength": 698100,
+            "target": 34963
+        }
+    ],
+    "images": [
+        {
+            "uri": "textures/image_0.png"
+        }
+    ],
+    "materials": [
+        {
+            "name": "Mat_1",
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 0
+                },
+                "metallicFactor": 0.0,
+                "roughnessFactor": 0.800000011920929
+            },
+            "doubleSided": true
+        }
+    ],
+    "meshes": [
+        {
+            "name": "meshes[0]",
+            "primitives": [
+                {
+                    "mode": 4,
+                    "material": 0,
+                    "indices": 3,
+                    "attributes": {
+                        "POSITION": 0,
+                        "NORMAL": 1,
+                        "TEXCOORD_0": 2
+                    }
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "v8",
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "mesh_0",
+            "mesh": 0
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9987
+        }
+    ],
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "textures": [
+        {
+            "source": 0,
+            "sampler": 0
+        }
+    ],
+    "scene": 0
+}
