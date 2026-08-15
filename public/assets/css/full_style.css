@@ -35,8 +35,7 @@ body {
 .tour-video {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    border: 0;
+    max-height: 70vh;
     border-radius: 16px;
     background: #000;
 }
@@ -51,7 +50,6 @@ body {
 }
 
 .model-link,
-.drive-link,
 .home-link {
     display: inline-block;
     margin: 0.75rem 0.75rem 0 0;
@@ -63,7 +61,6 @@ body {
     text-decoration: none;
 }
 
-.drive-link,
 .home-link {
     border: 1px solid rgba(255, 255, 255, 0.55);
     color: #fff;
@@ -71,7 +68,6 @@ body {
 }
 
 .model-link:focus-visible,
-.drive-link:focus-visible,
 .home-link:focus-visible {
     outline: 3px solid #fff;
     outline-offset: 4px;

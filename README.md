@@ -59,8 +59,7 @@ Every push to `main` will validate and deploy only the `public/` directory.
 
 ## Prototype asset notes
 
-- The garden tour is embedded from its public Google Drive preview URL, so no video file is included in the GitHub Pages artifact. A normal Drive link is included below each player as a fallback.
-- The original 140 MiB video and the former optimized copy are preserved locally under `source-material/` and intentionally ignored by Git.
+- The original 140 MiB garden video is preserved locally at `source-material/V1-original.mp4` and intentionally ignored by Git. The deployed 720p version is about 4.5 MiB.
 - The original files did not include the `v13` (Sweet Flag) or `v22` (Drumstick) glTF packages. Those two pages now show a clear unavailable message instead of making broken requests.
 - To restore either missing model, add its `.gltf`, `.bin`, and textures under `public/assets/models/`, then set that page's `data-model-url` to the relative `.gltf` path.
 - Three.js r128, GLTFLoader, and OrbitControls are loaded from HTTPS CDNs. The model data itself is served from the same GitHub Pages origin.
